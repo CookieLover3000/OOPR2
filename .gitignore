@@ -4,6 +4,7 @@
 # Qt files
 build-gebouw-Desktop_Qt_6_4_2_MinGW_64_bit-Debug
 *.pro.user
+*.pro.user.*
 
 # Compiled Object files
 *.slo
