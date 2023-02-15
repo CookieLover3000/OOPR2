@@ -12,7 +12,7 @@ class Draaideur : public Deur
 {
 public:
     Draaideur(bool,int,int, unsigned int, bool);
-    void teken(QPaintDevice*);
+    virtual void teken(QPaintDevice*);
 private:
     bool liggend;
 };
