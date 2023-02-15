@@ -6,13 +6,11 @@
 #include "schuifdeur.h"
 #include "draaideur.h"
 
-MainWindow::MainWindow(QWidget *parent) :
-    QMainWindow(parent),
-    ui(new Ui::MainWindow)
+MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    s1=new HallSensor(515,160);
-    deuren[0] = std::shared_ptr<Deur> (new SchuifDeur(true,503,250,80,s1));
+    s1= std::shared_ptr<Sensor>(new HallSensor(515,160));
+    deuren[0] = std::shared_ptr<Deur> (new SchuifDeur(true,503,250,80,s1.get()));
     deuren[1] = std::shared_ptr<Deur> (new Draaideur(true,295,290,30,true));
     deuren[2] = std::shared_ptr<Deur> (new Draaideur(true,248,140,40, false));
 
@@ -22,8 +20,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    delete ui;
-    delete s1;
 }
 
 void MainWindow::paintEvent(QPaintEvent *event){

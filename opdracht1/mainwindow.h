@@ -25,8 +25,8 @@ private slots:
     void on_d2Knop_clicked();
 
 private:
-    Ui::MainWindow* ui;
-    Sensor* s1;
+    std::shared_ptr<Ui::MainWindow> ui;
+    std::shared_ptr<Sensor> s1;
     std::array<std::shared_ptr<Deur>,3> deuren = {};
 };
 
