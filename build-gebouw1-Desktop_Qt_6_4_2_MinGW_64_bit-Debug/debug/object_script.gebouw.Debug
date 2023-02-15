@@ -1,0 +1,10 @@
+debug/main.o
+debug/codeslot.o
+debug/deur.o
+debug/draaideur.o
+debug/hallsensor.o
+debug/mainwindow.o
+debug/schuifdeur.o
+debug/sensor.o
+debug/sleutelslot.o
+debug/moc_mainwindow.o
