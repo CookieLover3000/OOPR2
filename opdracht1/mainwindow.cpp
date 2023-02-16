@@ -13,14 +13,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     deuren[0] = std::shared_ptr<Deur> (new SchuifDeur(true,503,250,80,s1.get()));
     deuren[1] = std::shared_ptr<Deur> (new Draaideur(true,295,290,30,true));
     deuren[2] = std::shared_ptr<Deur> (new Draaideur(true,248,140,40, false));
-
-
-
 }
 
 MainWindow::~MainWindow()
-{
-}
+{}
 
 void MainWindow::paintEvent(QPaintEvent *event){
 
@@ -52,9 +48,15 @@ void MainWindow::on_sensor_act_clicked()
 void MainWindow::on_schuifdeurSensorKnop_clicked()
 {
     if(deuren[0]->isDeurOpen())
+    {
         deuren[0]->sluit();
+        s1->activeer();
+    }
     else
+    {
         deuren[0]->open();
+        s1->deactiveer();
+    }
     update();
 }
 
