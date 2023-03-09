@@ -16,11 +16,12 @@ void Deur::open()
     bool temp = true;
     for(auto &i:sloten)
     {
+        i->ontgrendel(i->getInput()->text().toStdString());
         if(i->isVergrendeld())
             temp = false;
-        i->ontgrendel(i->getInput()->text().toStdString());
     }
     status = temp;
+
 }
 
 void Deur::sluit()
@@ -66,10 +67,10 @@ void Deur::zetStatus(bool a)
     status = a;
 }
 
-list <Slot*> Deur::returnSlot()
-{
-    return sloten;
-}
+//list <Slot*> Deur::returnSlot()
+//{
+//    return sloten;
+//}
 
 void Deur::maakSlot(Slot *s)
 {

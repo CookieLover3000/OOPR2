@@ -21,7 +21,7 @@ public:
     virtual void sluit();
     virtual void teken(QPaintDevice*);
     virtual bool isDeurOpen() const;
-    virtual list <Slot*> returnSlot();
+//    virtual list <Slot*> returnSlot();
     virtual unsigned int deurLengte() const;
     virtual std::pair<int,int> coordinaten() const;
     virtual void zetStatus(bool);
