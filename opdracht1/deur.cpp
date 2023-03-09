@@ -18,9 +18,9 @@ void Deur::sluit()
 void Deur::teken(QPaintDevice *tp)
 {
 QPainter p(tp);
-p.setBrush(Qt::SolidPattern);
+//p.setBrush(Qt::SolidPattern);
 
- p.setBrush(Qt::black);
+// p.setBrush(Qt::black);
  QPen pen(Qt::black,2,Qt::SolidLine, Qt::RoundCap, Qt::RoundJoin);
  p.setPen(pen);
  if(status) // controleert of de deur open is

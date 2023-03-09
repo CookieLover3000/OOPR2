@@ -20,5 +20,5 @@ else
 void SchuifDeur::sluit()
 {
     if(!sens->isGeactiveerd())
-    zetStatus(false);
+        zetStatus(false);
 }
