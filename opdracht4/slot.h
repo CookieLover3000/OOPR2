@@ -13,7 +13,7 @@ public:
     virtual void ontgrendel(std::string ontgrendelSleutel) = 0;
     virtual void vergrendel() = 0;
     virtual bool isVergrendeld() = 0;
-    virtual QLineEdit* getInput() = 0;
+    virtual QLineEdit* getLineInput() = 0;
 };
 
 #endif // SLOT_H

@@ -1,0 +1,12 @@
+release/main.o
+release/codeslot.o
+release/deur.o
+release/draaideur.o
+release/drukbox.o
+release/hallsensor.o
+release/herkenningsslot.o
+release/mainwindow.o
+release/schuifdeur.o
+release/sensor.o
+release/sleutelslot.o
+release/moc_mainwindow.o

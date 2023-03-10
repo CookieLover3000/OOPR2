@@ -21,7 +21,7 @@ void SleutelSlot::ontgrendel(std::string ontgrendelSleutel)
         vergrendeld = false;
 }
 
-QLineEdit* SleutelSlot::getInput()
+QLineEdit* SleutelSlot::getLineInput()
 {
     return input;
 }

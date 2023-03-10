@@ -7,6 +7,8 @@
 #include "draaideur.h"
 #include "codeslot.h"
 #include "sleutelslot.h"
+#include "herkenningsslot.h"
+#include "drukbox.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -14,22 +16,19 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     s1 = std::shared_ptr<Sensor> (new HallSensor(515,160));
 
-//    deuren[0] = std::shared_ptr<Deur> (new SchuifDeur(true,503,250,80,s1.get(), new SleutelSlot("test")));
-//    deuren[1] = std::shared_ptr<Deur> (new Draaideur(true,295,290,30,true, new CodeSlot(420)));
-//    deuren[2] = std::shared_ptr<Deur> (new Draaideur(true,248,140,40, false, new CodeSlot(69)));
+    hs1 = std::shared_ptr<Slot> (new HerkenningsSlot(ui->lineEditDraaiBoven2, new Drukbox(ui->textBrowser)));
 
     deuren[0] = std::shared_ptr<Deur> (new SchuifDeur(true,503,250,80,s1.get()));
     deuren[1] = std::shared_ptr<Deur> (new Draaideur(true,295,290,30,true));
     deuren[2] = std::shared_ptr<Deur> (new Draaideur(true,248,140,40, false));
 
-
-//        deuren[0]->maakSlot(std::unique_ptr<Slot> (new SleutelSlot("test1", ui->lineEditSchuif1)).get());
-//        deuren[0]->maakSlot(std::unique_ptr<Slot> (new SleutelSlot("test2", ui->lineEditSchuif2)).get());
     deuren[0]->maakSlot(new SleutelSlot("test1", ui->lineEditSchuif1));
     deuren[0]->maakSlot(new SleutelSlot("test2", ui->lineEditSchuif2));
 
+
     deuren[2]->maakSlot(new CodeSlot(420,ui->lineEditDraaiBoven1));
-    deuren[2]->maakSlot(new CodeSlot(69,ui->lineEditDraaiBoven2));
+    deuren[2]->maakSlot(hs1.get());
+//    deuren[2]->maakSlot(new HerkenningsSlot(ui->lineEditDraaiBoven2, new Drukbox(ui->textBrowser)));
 
     deuren[1]->maakSlot(new CodeSlot(123,ui->lineEditDraaiBeneden1));
 }
@@ -67,62 +66,79 @@ void MainWindow::on_sensor_act_clicked()
 void MainWindow::on_schuifdeurSensorKnop_clicked()
 {
     if(deuren[0]->isDeurOpen())
-    {
         deuren[0]->sluit();
-        for(auto &i:deuren[0]->returnSlot())
-            i->vergrendel();
-    }
     else
-    {
-        for(auto &i:deuren[0]->returnSlot())
-        {
-            if(i->isVergrendeld())
-                i->ontgrendel(i->getInput()->text().toStdString());
-        }
         deuren[0]->open();
-    }
     update();
 }
 
 void MainWindow::on_d1Knop_clicked()
 {
     if(deuren[2]->isDeurOpen())
-    {
         deuren[2]->sluit();
-        for(auto &i:deuren[2]->returnSlot())
-            i->vergrendel();
-    }
     else
-    {
-        for(auto &i:deuren[2]->returnSlot())
-        {
-            if(i->isVergrendeld())
-                i->ontgrendel(i->getInput()->text().toStdString());
-        }
         deuren[2]->open();
-    }
     update();
 }
 void MainWindow::on_d2Knop_clicked()
 {
     if(deuren[1]->isDeurOpen())
-    {
         deuren[1]->sluit();
-        for(auto &i:deuren[1]->returnSlot())
-            i->vergrendel();
-    }
     else
-    {
-        for(auto &i:deuren[1]->returnSlot())
-        {
-            if(i->isVergrendeld())
-                i->ontgrendel(i->getInput()->text().toStdString());
-
-
-        }
         deuren[1]->open();
-    }
     update();
 }
+
+/* Twee manieren geschreven omdat ik niet zeker wist of de onderste goed gekeurt wordt.
+ * Ik vind dat wel de mooiere manier, want je hoeft dan niet apart een slot te construeren. */
+
+void MainWindow::on_positiveAutorisatieKnop_clicked()
+{
+    HerkenningsSlot *slot = dynamic_cast<HerkenningsSlot*>(hs1.get());
+    slot->voegAutorissatieToe(ui->lineEditVoegAutorisatieToe->text().toStdString(), true);
+    update();
+}
+
+void MainWindow::on_negatieveAutorisatieKnop_clicked()
+{
+    HerkenningsSlot *slot = dynamic_cast<HerkenningsSlot*>(hs1.get());
+    slot->voegAutorissatieToe(ui->lineEditVoegAutorisatieToe->text().toStdString(), false);
+    update();
+}
+
+//void MainWindow::on_positiveAutorisatieKnop_clicked()
+//{
+//    for(auto &i : deuren[2]->returnSlot())
+//    {
+//        auto* slot = dynamic_cast<HerkenningsSlot*>(i);
+//        if(slot != NULL)
+//            slot->voegAutorissatieToe(ui->lineEditVoegAutorisatieToe->text().toStdString(), true);
+//    }
+//    update();
+//}
+
+//void MainWindow::on_negatieveAutorisatieKnop_clicked()
+//{
+//    for(auto &i : deuren[2]->returnSlot())
+//    {
+//        auto* slot = dynamic_cast<HerkenningsSlot*>(i);
+//        if(slot != NULL)
+//            slot->voegAutorissatieToe(ui->lineEditVoegAutorisatieToe->text().toStdString(), false);
+//    }
+//    update();
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

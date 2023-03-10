@@ -9,6 +9,8 @@ class MainWindow;
 }
 class Sensor;
 class Deur;
+class Afdrukker;
+class Slot;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -23,10 +25,13 @@ private slots:
     void on_schuifdeurSensorKnop_clicked();
     void on_d1Knop_clicked();
     void on_d2Knop_clicked();
+    void on_positiveAutorisatieKnop_clicked();
+    void on_negatieveAutorisatieKnop_clicked();
 
 private:
     std::shared_ptr<Ui::MainWindow> ui;
     std::shared_ptr<Sensor> s1;
+    std::shared_ptr<Slot> hs1;
     std::array<std::shared_ptr<Deur>,3> deuren = {};
 };
 

@@ -26,7 +26,7 @@ void CodeSlot::ontgrendel(std::string eenCode)
         vergrendeld = false;
 }
 
-QLineEdit* CodeSlot::getInput()
+QLineEdit* CodeSlot::getLineInput()
 {
     return input;
 }

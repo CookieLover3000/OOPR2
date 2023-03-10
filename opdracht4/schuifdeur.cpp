@@ -20,11 +20,3 @@ if(isDeurOpen()) // controleert of de deur open is
 else
     p.drawLine(coordinaten().first, coordinaten().second, coordinaten().first, coordinaten().second-deurLengte());
 }
-
-void SchuifDeur::sluit()
-{
-    if(!sens->isGeactiveerd())
-    {
-        zetStatus(false);
-    }
-}

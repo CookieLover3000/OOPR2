@@ -1,13 +1,14 @@
 #ifndef DEUR_H
 #define DEUR_H
 
-#include "slot.h"
+//#include "slot.h"
 #include <list>
 #include <memory>
 
 
 using namespace std;
 
+class Slot;
 class QPaintDevice;
 
 class Deur

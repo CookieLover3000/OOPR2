@@ -1,5 +1,5 @@
+#include "slot.h"
 #include "deur.h"
-
 #include <QPainter>
 
 Deur::Deur(bool a, int b, int c, unsigned int d) : status(a), x_coordinaat(b), y_coordinaat(c), lengte(d)
@@ -14,15 +14,21 @@ Deur::~Deur()
 void Deur::open()
 {
     bool temp = true;
-    for(auto &i:sloten)
+    for(auto &i : sloten)
+    {
+        i->ontgrendel(i->getLineInput()->text().toStdString());
         if(i->isVergrendeld())
             temp = false;
+    }
     status = temp;
+
 }
 
 void Deur::sluit()
 {
     status = false;
+    for(auto &i : sloten)
+        i->vergrendel();
 }
 
 void Deur::teken(QPaintDevice *tp)

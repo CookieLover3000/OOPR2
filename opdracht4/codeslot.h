@@ -13,7 +13,7 @@ public:
     virtual void vergrendel();
     virtual bool isVergrendeld();
     virtual void ontgrendel(std::string eenCode);
-    virtual QLineEdit* getInput();
+    virtual QLineEdit* getLineInput();
 private:
     int code;
     bool vergrendeld;
