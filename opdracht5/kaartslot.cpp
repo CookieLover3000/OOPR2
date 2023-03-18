@@ -1,7 +1,7 @@
 #include "kaartslot.h"
 #include "idkaart.h"
 //#include "slotexception.h"
-KaartSlot::KaartSlot(string plaats,QLineEdit *i) : plaats(plaats), input(i), vergrendeld(false)
+KaartSlot::KaartSlot(string plaats,QLineEdit *i) : plaats(plaats), vergrendeld(false), input(i)
 {
 
 }

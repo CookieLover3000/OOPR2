@@ -1,0 +1,15 @@
+debug/main.o
+debug/codeslot.o
+debug/deur.o
+debug/draaideur.o
+debug/drukbox.o
+debug/hallsensor.o
+debug/herkenningsslot.o
+debug/idkaart.o
+debug/kaartslot.o
+debug/mainwindow.o
+debug/schuifdeur.o
+debug/sensor.o
+debug/sleutelslot.o
+debug/slotexception.o
+debug/moc_mainwindow.o

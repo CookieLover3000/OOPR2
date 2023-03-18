@@ -1,0 +1,45 @@
+# Prerequisites
+*.d
+
+# Git Files
+.gitignore
+.gitattributes
+
+# Qt files
+build-gebouw-Desktop_Qt_6_4_2_MinGW_64_bit-Debug
+build-gebouw1-Desktop_Qt_6_4_2_MinGW_64_bit-Debug
+build-gebouw2-Desktop_Qt_6_4_2_MinGW_64_bit-Debug
+build-gebouw3-Desktop_Qt_6_4_2_MinGW_64_bit-Debug
+build-gebouw5-Desktop_Qt_6_4_2_MinGW_64_bit-Debug
+*.pro.user
+*.pro.user.*
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app

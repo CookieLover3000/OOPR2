@@ -20,7 +20,6 @@ private:
     vector <KaartSlot*> toegang;
     string naamEigenaar;
     string adresEigenaar;
-    KaartSlot *kaart;
 };
 
 #endif // IDKAART_H
