@@ -18,16 +18,19 @@ void IdKaart::geefToegang(KaartSlot *a)
 
 void IdKaart::verwijderToegang(KaartSlot *a)
 {
-    vector<KaartSlot*>::iterator i;
-    for(i=toegang.begin(); i != toegang.end(); i++)
+    for(vector<KaartSlot*>::iterator i=toegang.begin(); i != toegang.end(); i++)
+    {
         if(*i == a)
+        {
             toegang.erase(i);
+            return;
+        }
+    }
 }
 
 bool IdKaart::heeftToegang(KaartSlot *a)
 {
-    vector<KaartSlot*>::iterator i;
-    for(i=toegang.begin(); i != toegang.end(); i++)
+    for(vector<KaartSlot*>::iterator i=toegang.begin(); i != toegang.end(); i++)
         if(*i == a)
             return true;
     return false;

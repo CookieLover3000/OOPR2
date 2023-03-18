@@ -140,14 +140,15 @@ void MainWindow::on_negatieveAutorisatieKnop_clicked()
 
 void MainWindow::on_maakIdKnop_clicked()
 {
-//    KaartSlot slot("", nullptr);
-    std::shared_ptr<KaartSlot> slot = make_shared<KaartSlot>("", nullptr);
+    KaartSlot slot("", nullptr);
     IdKaart *kaart = new IdKaart(ui->lineEditUniekId->text().toStdString(), ui->lineEditNaam->text().toStdString(), ui->lineEditAdres->text().toStdString());
-    slot->voegIdKaartToe(kaart);
-//    ui->lineEditUniekId->setText("");
-//    ui->lineEditNaam->setText("");
-//    ui->lineEditAdres->setText("");
+    slot.voegIdKaartToe(kaart);
+    ui->lineEditUniekId->setText("");
+    ui->lineEditNaam->setText("");
+    ui->lineEditAdres->setText("");
     update();
+
+    delete kaart;
 }
 
 void MainWindow::on_deleteID_clicked()
@@ -168,6 +169,7 @@ void MainWindow::on_koppelId_clicked()
     i = tempIdKaart.find(ui->lineEditKoppelId->text().toStdString());
     if(i != tempIdKaart.end())
         i->second->geefToegang(slot);
+    ui->lineEditKoppelId->setText("");
     update();
 
     delete tempSlot;
@@ -189,6 +191,7 @@ void MainWindow::on_ontkoppelId_clicked()
      }
     ui->lineEditKoppelId->setText("");
     update();
+
     delete tempSlot;
 }
 
