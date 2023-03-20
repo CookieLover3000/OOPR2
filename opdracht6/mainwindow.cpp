@@ -43,8 +43,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 }
 
 MainWindow::~MainWindow()
-{
-}
+{}
 
 void MainWindow::paintEvent(QPaintEvent *event){
 
@@ -116,7 +115,6 @@ void MainWindow::on_d2Knop_clicked()
     }
     update();
 }
-
 /**********************/
 /* opdracht 4 knoppen */
 /**********************/
@@ -136,7 +134,6 @@ void MainWindow::on_negatieveAutorisatieKnop_clicked()
     ui->lineEditVoegAutorisatieToe->setText("");
     update();
 }
-
 /**********************/
 /* Opdracht 5 knoppen */
 /**********************/
@@ -169,15 +166,15 @@ void MainWindow::on_koppelId_clicked()
     KaartSlot *tempSlot = new KaartSlot("", nullptr);
     KaartSlot *slot = dynamic_cast<KaartSlot*> (ks1.get());
     std::map<std::string, IdKaart*> tempIdKaart = tempSlot->returnIdKaarten();
-
     std::map<std::string, IdKaart*>::iterator i;
+
     i = tempIdKaart.find(ui->lineEditKoppelId->text().toStdString());
     if(i != tempIdKaart.end())
         i->second->geefToegang(slot);
     ui->lineEditKoppelId->setText("");
     update();
 
-    delete tempSlot;
+//    delete tempSlot;
 }
 
 void MainWindow::on_ontkoppelId_clicked()
@@ -185,15 +182,19 @@ void MainWindow::on_ontkoppelId_clicked()
     KaartSlot *tempSlot = new KaartSlot("", nullptr);
     KaartSlot *slot = dynamic_cast<KaartSlot*> (ks1.get());
     std::map<std::string, IdKaart*> tempIdKaart = tempSlot->returnIdKaarten();
-
     std::map<std::string, IdKaart*>::iterator i;
-    i = tempIdKaart.find(ui->lineEditKoppelId->text().toStdString());
-    if(i != tempIdKaart.end())
-        i->second->verwijderToegang(slot);
+     for (i = tempIdKaart.begin(); i != tempIdKaart.end(); i++)
+     {
+        if(i->first.compare(ui->lineEditKoppelId->text().toStdString()))
+        {
+            i->second->verwijderToegang(slot);
+            break;
+        }
+     }
     ui->lineEditKoppelId->setText("");
     update();
 
-    delete tempSlot;
+//    delete tempSlot;
 }
 
 

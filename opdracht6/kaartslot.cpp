@@ -1,9 +1,9 @@
 #include "kaartslot.h"
 #include "idkaart.h"
-//#include "slotexception.h"
 
 map<string, IdKaart*> KaartSlot::idKaarten = {};
 
+//#include "slotexception.h"
 KaartSlot::KaartSlot(string plaats,QLineEdit *i) : plaats(plaats), vergrendeld(false), input(i)
 {
 
@@ -12,6 +12,15 @@ KaartSlot::KaartSlot(string plaats,QLineEdit *i) : plaats(plaats), vergrendeld(f
 void KaartSlot::ontgrendel(string eenSleutel)
 {
     map <string, IdKaart*>::iterator i;
+
+//    for (i = idKaarten.begin(); i != idKaarten.end(); i++)
+//        if(i->first.compare(eenSleutel) == 0)
+//        {
+//            if(i->second->heeftToegang(this))
+//                vergrendeld = false;
+//            return;
+//        }
+
     i = idKaarten.find(eenSleutel);
     if(i != idKaarten.end())
         if(i->second->heeftToegang(this))
@@ -35,10 +44,7 @@ bool KaartSlot::isVergrendeld()
 
 void KaartSlot::voegIdKaartToe(IdKaart *eenIdKaart)
 {
-    std::map<string, IdKaart*>::iterator i;
-    i = idKaarten.find(eenIdKaart->userId());
-    if(i == idKaarten.end())
-        idKaarten[eenIdKaart->userId()] = eenIdKaart;
+    idKaarten[eenIdKaart->userId()] = eenIdKaart;
 }
 
 void KaartSlot::verwijderIdKaart(string eenId)
