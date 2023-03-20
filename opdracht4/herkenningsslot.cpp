@@ -18,9 +18,10 @@ void HerkenningsSlot::ontgrendel(string naam)
 {
     map <string, bool>::iterator i;
     for (i = kaartenbak.begin(); i != kaartenbak.end(); i++)
-        if(i->first.compare(naam) == 0 && i->second)
+        if(i->first.compare(naam) == 0)
         {
-            vergrendeld = false;
+            if(i->second)
+                vergrendeld = false;
             return;
         }
 }

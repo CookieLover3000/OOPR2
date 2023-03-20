@@ -16,7 +16,6 @@ void Deur::open()
     bool temp = true;
     for(auto &i : sloten)
     {
-        i->ontgrendel(i->getLineInput()->text().toStdString());
         if(i->isVergrendeld())
             temp = false;
     }
@@ -67,12 +66,16 @@ void Deur::zetStatus(bool a)
     status = a;
 }
 
-list <Slot*> Deur::returnSlot()
+list <std::shared_ptr<Slot>> Deur::returnSlot()
 {
+//    for (auto &i : sloten)
+//    {
+//        return(i);
+//    }
     return sloten;
 }
 
-void Deur::maakSlot(Slot *s)
+void Deur::maakSlot(std::shared_ptr<Slot> s)
 {
     sloten.push_back(s);
 }
