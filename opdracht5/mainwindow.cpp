@@ -141,10 +141,10 @@ void MainWindow::on_negatieveAutorisatieKnop_clicked()
 void MainWindow::on_maakIdKnop_clicked()
 {
 //    KaartSlot slot("", nullptr);
-    std::shared_ptr<KaartSlot> slot = make_shared<KaartSlot>("slot", nullptr);
-//    IdKaart *kaart = new IdKaart(ui->lineEditUniekId->text().toStdString(), ui->lineEditNaam->text().toStdString(), ui->lineEditAdres->text().toStdString());
-    std::shared_ptr<IdKaart> kaart = make_shared<IdKaart>(ui->lineEditUniekId->text().toStdString(), ui->lineEditNaam->text().toStdString(), ui->lineEditAdres->text().toStdString());
-    slot->voegIdKaartToe(kaart.get());
+    std::shared_ptr<KaartSlot> slot = make_shared<KaartSlot>("", nullptr);
+    IdKaart *kaart = new IdKaart(ui->lineEditUniekId->text().toStdString(), ui->lineEditNaam->text().toStdString(), ui->lineEditAdres->text().toStdString());
+//    std::shared_ptr<IdKaart> kaart = make_shared<IdKaart>(ui->lineEditUniekId->text().toStdString(), ui->lineEditNaam->text().toStdString(), ui->lineEditAdres->text().toStdString());
+    slot->voegIdKaartToe(kaart);
     ui->lineEditUniekId->setText("");
     ui->lineEditNaam->setText("");
     ui->lineEditAdres->setText("");
@@ -174,7 +174,7 @@ void MainWindow::on_koppelId_clicked()
     ui->lineEditKoppelId->setText("");
     update();
 
-    delete tempSlot;
+//    delete tempSlot;
 }
 
 void MainWindow::on_ontkoppelId_clicked()
@@ -194,7 +194,7 @@ void MainWindow::on_ontkoppelId_clicked()
     ui->lineEditKoppelId->setText("");
     update();
 
-    delete tempSlot;
+//    delete tempSlot;
 }
 
 

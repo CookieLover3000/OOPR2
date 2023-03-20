@@ -21,8 +21,8 @@ public:
 private:
     string plaats;
     bool vergrendeld;
-    map <string,IdKaart*> idKaarten;
-    IdKaart *ID;
+    static map <string,IdKaart*> idKaarten;
+//    IdKaart *ID;
 //    SlotException *ex;
     QLineEdit* input;
 };

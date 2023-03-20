@@ -39,7 +39,6 @@ void SchuifDeur::open()
     bool temp = true;
         for(auto &i : returnSlot())
         {
-//            i->ontgrendel(i->getLineInput()->text().toStdString());
             if(i->isVergrendeld())
                 temp = false;
         }

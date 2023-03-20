@@ -1,5 +1,8 @@
 #include "kaartslot.h"
 #include "idkaart.h"
+
+map<string, IdKaart*> KaartSlot::idKaarten = {};
+
 //#include "slotexception.h"
 KaartSlot::KaartSlot(string plaats,QLineEdit *i) : plaats(plaats), vergrendeld(false), input(i)
 {
