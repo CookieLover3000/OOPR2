@@ -8,7 +8,7 @@ class KaartSlot;
 class SlotException
 {
 public:
-    SlotException();
+    SlotException(string, KaartSlot*, string);
     ~SlotException(){}
     virtual string kaartVanBinnendringer();
     virtual string plaatsVanHetSlot();

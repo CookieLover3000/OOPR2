@@ -6,7 +6,7 @@
 using namespace std;
 
 class IdKaart;
-//class SlotException;
+class SlotException;
 class KaartSlot : public Slot
 {
 public:
