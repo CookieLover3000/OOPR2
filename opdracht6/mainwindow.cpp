@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QPainter>
+#include <iostream>
+#include <QTextBrowser>
 
 #include "hallsensor.h"
 #include "schuifdeur.h"
@@ -11,6 +13,7 @@
 #include "kaartslot.h"
 #include "drukbox.h"
 #include "idkaart.h"
+#include "slotexception.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow)
 {
@@ -79,9 +82,29 @@ void MainWindow::on_schuifdeurSensorKnop_clicked()
         deuren[0]->sluit();
     else
     {
-        for(auto &i : deuren[0]->returnSlot())
+        try
         {
-            i->ontgrendel(i->getLineInput()->text().toStdString());
+            for(auto &i : deuren[0]->returnSlot())
+            {
+                i->ontgrendel(i->getLineInput()->text().toStdString());
+            }
+        }
+        catch (SlotException ex)
+        {
+            ui->textBrowser->clear();
+            string a = ex.plaatsVanHetSlot();
+            int i = a.length();
+            if(a[i-1] == '1')
+            {
+                a[i-1] = '\0';
+                ui->textBrowser->append("geen idkaart voor: " + QString::fromStdString(ex.kaartVanBinnendringer()));
+            }
+            else if(a[i-1] == '2')
+            {
+                a[i-1] = '\0';
+                string temp = "Geen toegang bij " + a + " met kaart: " + ex.kaartVanBinnendringer();
+                ui->textBrowser->append(QString::fromStdString(temp));
+            }
         }
         deuren[0]->open();
     }
@@ -94,9 +117,29 @@ void MainWindow::on_d1Knop_clicked()
         deuren[2]->sluit();
     else
     {
-        for(auto &i : deuren[2]->returnSlot())
+        try
         {
-            i->ontgrendel(i->getLineInput()->text().toStdString());
+            for(auto &i : deuren[2]->returnSlot())
+            {
+                i->ontgrendel(i->getLineInput()->text().toStdString());
+            }
+        }
+        catch (SlotException ex)
+        {
+            ui->textBrowser->clear();
+            string a = ex.plaatsVanHetSlot();
+            int i = a.length();
+            if(a[i-1] == '1')
+            {
+                a[i-1] = '\0';
+                ui->textBrowser->append("geen idkaart voor: " + QString::fromStdString(ex.kaartVanBinnendringer()));
+            }
+            else if(a[i-1] == '2')
+            {
+                a[i-1] = '\0';
+                string temp = "Geen toegang bij " + a + " met kaart: " + ex.kaartVanBinnendringer();
+                ui->textBrowser->append(QString::fromStdString(temp));
+            }
         }
         deuren[2]->open();
     }

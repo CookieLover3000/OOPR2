@@ -24,6 +24,10 @@ void HerkenningsSlot::ontgrendel(string naam)
                 vergrendeld = false;
             return;
         }
+//    i = kaartenbak.find(naam);
+//    if(i != kaartenbak.end())
+//        if(i->second)
+//            vergrendeld = false;
 }
 
 void HerkenningsSlot::toonKaartenbak()

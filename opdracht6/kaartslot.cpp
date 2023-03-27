@@ -1,6 +1,6 @@
 #include "kaartslot.h"
 #include "idkaart.h"
-//#include "slotexception.h"
+#include "slotexception.h"
 
 map<string, IdKaart*> KaartSlot::idKaarten = {};
 
@@ -11,11 +11,28 @@ KaartSlot::KaartSlot(string plaats,QLineEdit *i) : plaats(plaats), vergrendeld(f
 
 void KaartSlot::ontgrendel(string eenSleutel)
 {
-    map <string, IdKaart*>::iterator i;
-    i = idKaarten.find(eenSleutel);
-    if(i != idKaarten.end())
-        if(i->second->heeftToegang(this))
+//    map <string, IdKaart*>::iterator i;
+//    i = idKaarten.find(eenSleutel);
+//    if(i != idKaarten.end())
+//        if(i->second->heeftToegang(this))
+//            vergrendeld = false;
+
+        map <string, IdKaart*>::iterator i;
+        i = idKaarten.find(eenSleutel);
+        if(i == idKaarten.end())
+        {
+            string tempPlaats1 = plaats;
+            tempPlaats1.append("1");
+            throw SlotException(eenSleutel, this, tempPlaats1);
+        }
+        else if (i->second->heeftToegang(this))
             vergrendeld = false;
+        else
+        {
+            string tempPlaats2 = plaats;
+            tempPlaats2.append("2");
+            throw SlotException(i->first, this, tempPlaats2);
+        }
 }
 
 void KaartSlot::vergrendel()
