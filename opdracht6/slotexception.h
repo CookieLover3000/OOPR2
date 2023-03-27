@@ -1,6 +1,6 @@
 /*
- * Waarschuwing voor als je dit namaakt,
- * dit is niet hoe het moet!
+ * Waarschuwing voor als je dit namaakt!
+ * Dit is niet hoe het moet!
  * Ik doe dit gewoon omdat ik het leuk vind.
  * Je kan het natuurlijk wel gewoon proberen.
  * Wie weet, misschien wordt het wel gewoon afgetekend.
