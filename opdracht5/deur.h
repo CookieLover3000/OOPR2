@@ -15,7 +15,6 @@ class Deur
 {
 public:
     Deur(bool, int, int, unsigned int);
-    Deur(bool, int, int, unsigned int, Slot*);
     virtual ~Deur();
     virtual void open();
     virtual void sluit();
@@ -32,10 +31,7 @@ private:
     int x_coordinaat;
     int y_coordinaat;
     unsigned int lengte;
-
-    Slot *slot;
     list <std::shared_ptr<Slot>> sloten;
-//    bool aangemaakt = false;
 };
 
 #endif // DEUR_H

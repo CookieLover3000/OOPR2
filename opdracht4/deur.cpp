@@ -5,9 +5,6 @@
 Deur::Deur(bool a, int b, int c, unsigned int d) : status(a), x_coordinaat(b), y_coordinaat(c), lengte(d)
 {}
 
-Deur::Deur(bool a, int b, int c, unsigned int d, Slot* s) : status(a), x_coordinaat(b), y_coordinaat(c), lengte(d), slot(s)
-{}
-
 Deur::~Deur()
 {}
 
@@ -68,10 +65,6 @@ void Deur::zetStatus(bool a)
 
 list <std::shared_ptr<Slot>> Deur::returnSlot()
 {
-//    for (auto &i : sloten)
-//    {
-//        return(i);
-//    }
     return sloten;
 }
 

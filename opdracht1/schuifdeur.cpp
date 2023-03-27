@@ -20,5 +20,14 @@ else
 void SchuifDeur::sluit()
 {
     if(!sens->isGeactiveerd())
-        zetStatus(false);
+        Deur::sluit();
+    sens->activeer();
+        // zetStatus(false);
+}
+
+void SchuifDeur::open()
+{
+    Deur::open();
+    if(Deur::isDeurOpen())
+        sens->deactiveer();
 }

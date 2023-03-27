@@ -16,6 +16,7 @@ public:
     SchuifDeur(bool,int,int,unsigned int, Sensor*);
     virtual void teken(QPaintDevice*);
     virtual void sluit();
+    virtual void open();
 private:
     Sensor *sens;
 };

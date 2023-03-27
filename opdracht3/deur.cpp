@@ -5,9 +5,6 @@
 Deur::Deur(bool a, int b, int c, unsigned int d) : status(a), x_coordinaat(b), y_coordinaat(c), lengte(d)
 {}
 
-Deur::Deur(bool a, int b, int c, unsigned int d, Slot* s) : status(a), x_coordinaat(b), y_coordinaat(c), lengte(d), slot(s)
-{}
-
 Deur::~Deur()
 {}
 

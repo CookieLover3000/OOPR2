@@ -6,9 +6,6 @@
 SchuifDeur::SchuifDeur(bool a,int b, int c, unsigned int d, Sensor *e) : Deur(a,b,c,d), sens(e)
 {}
 
-SchuifDeur::SchuifDeur(bool a,int b, int c, unsigned int d, Sensor *e, Slot *s) : Deur(a,b,c,d,s), sens(e)
-{}
-
 void SchuifDeur::teken(QPaintDevice *tp)
 {
 QPainter p(tp);
@@ -19,4 +16,18 @@ if(isDeurOpen()) // controleert of de deur open is
     p.drawLine(coordinaten().first, coordinaten().second, coordinaten().first, coordinaten().second+deurLengte());
 else
     p.drawLine(coordinaten().first, coordinaten().second, coordinaten().first, coordinaten().second-deurLengte());
+}
+
+void SchuifDeur::sluit()
+{
+    if(!sens->isGeactiveerd())
+       Deur::sluit();
+    sens->activeer();
+}
+
+void SchuifDeur::open()
+{
+    Deur::open();
+    if(Deur::isDeurOpen())
+        sens->deactiveer();
 }

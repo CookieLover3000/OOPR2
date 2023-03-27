@@ -11,7 +11,6 @@ class Draaideur : public Deur
 {
 public:
     Draaideur(bool,int,int, unsigned int, bool);
-    Draaideur(bool,int,int, unsigned int, bool, Slot*);
     virtual void teken(QPaintDevice*);
 private:
     bool liggend;

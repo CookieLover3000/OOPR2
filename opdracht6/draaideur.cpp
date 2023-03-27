@@ -4,9 +4,6 @@
 Draaideur::Draaideur(bool a, int b, int c, unsigned int d, bool e) : Deur(a,b,c,d),liggend(e)
 {}
 
-Draaideur::Draaideur(bool a, int b, int c, unsigned int d, bool e, Slot* s) : Deur(a,b,c,d,s),liggend(e)
-{}
-
 void Draaideur::teken(QPaintDevice *tp)
 {
 QPainter p(tp);

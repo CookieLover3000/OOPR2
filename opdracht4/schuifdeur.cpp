@@ -1,13 +1,9 @@
 #include "schuifdeur.h"
 #include "sensor.h"
-#include "slot.h"
 
 #include <QPainter>
 
 SchuifDeur::SchuifDeur(bool a,int b, int c, unsigned int d, Sensor *e) : Deur(a,b,c,d), sens(e)
-{}
-
-SchuifDeur::SchuifDeur(bool a,int b, int c, unsigned int d, Sensor *e, Slot *s) : Deur(a,b,c,d,s), sens(e)
 {}
 
 void SchuifDeur::teken(QPaintDevice *tp)
@@ -26,23 +22,13 @@ void SchuifDeur::teken(QPaintDevice *tp)
 void SchuifDeur::sluit()
 {
     if(!sens->isGeactiveerd())
-        zetStatus(false);
-    for(auto &i : returnSlot())
-    {
-        i->vergrendel();
-    }
+        Deur::sluit();
     sens->activeer();
 }
 
 void SchuifDeur::open()
 {
-    bool temp = true;
-        for(auto &i : returnSlot())
-        {
-            if(i->isVergrendeld())
-                temp = false;
-        }
-        if(temp)
-            sens->deactiveer();
-        zetStatus(temp);
+    Deur::open();
+    if(Deur::isDeurOpen())
+        sens->deactiveer();
 }

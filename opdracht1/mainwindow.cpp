@@ -48,15 +48,9 @@ void MainWindow::on_sensor_act_clicked()
 void MainWindow::on_schuifdeurSensorKnop_clicked()
 {
     if(deuren[0]->isDeurOpen())
-    {
         deuren[0]->sluit();
-        s1->activeer();
-    }
     else
-    {
         deuren[0]->open();
-        s1->deactiveer();
-    }
     update();
 }
 
