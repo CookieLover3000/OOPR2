@@ -89,22 +89,10 @@ void MainWindow::on_schuifdeurSensorKnop_clicked()
                 i->ontgrendel(i->getLineInput()->text().toStdString());
             }
         }
-        catch (SlotException ex)
+        catch (SlotException &ex)
         {
             ui->textBrowser->clear();
-            string a = ex.plaatsVanHetSlot();
-            int i = a.length();
-            if(a[i-1] == '1')
-            {
-                a[i-1] = '\0';
-                ui->textBrowser->append("geen idkaart voor: " + QString::fromStdString(ex.kaartVanBinnendringer()));
-            }
-            else if(a[i-1] == '2')
-            {
-                a[i-1] = '\0';
-                string temp = "Geen toegang bij " + a + " met kaart: " + ex.kaartVanBinnendringer();
-                ui->textBrowser->append(QString::fromStdString(temp));
-            }
+            ui->textBrowser->append(QString::fromStdString(ex.returnErrorMessage()));
         }
         deuren[0]->open();
     }
@@ -124,22 +112,10 @@ void MainWindow::on_d1Knop_clicked()
                 i->ontgrendel(i->getLineInput()->text().toStdString());
             }
         }
-        catch (SlotException ex)
+        catch (SlotException &ex)
         {
             ui->textBrowser->clear();
-            string a = ex.plaatsVanHetSlot();
-            int i = a.length();
-            if(a[i-1] == '1')
-            {
-                a[i-1] = '\0';
-                ui->textBrowser->append("geen idkaart voor: " + QString::fromStdString(ex.kaartVanBinnendringer()));
-            }
-            else if(a[i-1] == '2')
-            {
-                a[i-1] = '\0';
-                string temp = "Geen toegang bij " + a + " met kaart: " + ex.kaartVanBinnendringer();
-                ui->textBrowser->append(QString::fromStdString(temp));
-            }
+            ui->textBrowser->append(QString::fromStdString(ex.returnErrorMessage()));
         }
         deuren[2]->open();
     }
