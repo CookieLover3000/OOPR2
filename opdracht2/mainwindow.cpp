@@ -57,12 +57,10 @@ void MainWindow::on_schuifdeurSensorKnop_clicked()
     if(deuren[0]->isDeurOpen())
     {
         deuren[0]->sluit();
-        deuren[0]->returnSlot()->vergrendel();
     }
     else
     {
-        if(deuren[0]->returnSlot()->isVergrendeld())
-            deuren[0]->returnSlot()->ontgrendel(ui->lineEdit->text().toStdString());
+        deuren[0]->returnSlot()->ontgrendel(ui->lineEdit->text().toStdString());
         deuren[0]->open();
     }
     update();
@@ -73,12 +71,10 @@ void MainWindow::on_d1Knop_clicked()
     if(deuren[2]->isDeurOpen())
     {
         deuren[2]->sluit();
-        deuren[2]->returnSlot()->vergrendel();
     }
     else
     {
-        if(deuren[2]->returnSlot()->isVergrendeld())
-            deuren[2]->returnSlot()->ontgrendel(ui->lineEdit1->text().toStdString());
+        deuren[2]->returnSlot()->ontgrendel(ui->lineEdit1->text().toStdString());
         deuren[2]->open();
     }
     update();
@@ -88,12 +84,10 @@ void MainWindow::on_d2Knop_clicked()
     if(deuren[1]->isDeurOpen())
     {
         deuren[1]->sluit();
-        deuren[1]->returnSlot()->vergrendel();
     }
     else
     {
-        if(deuren[1]->returnSlot()->isVergrendeld())
-            deuren[1]->returnSlot()->ontgrendel(ui->lineEdit2->text().toStdString());
+        deuren[1]->returnSlot()->ontgrendel(ui->lineEdit2->text().toStdString());
         deuren[1]->open();
     }
     update();

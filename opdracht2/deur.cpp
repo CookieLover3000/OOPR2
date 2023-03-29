@@ -20,6 +20,7 @@ void Deur::open()
 void Deur::sluit()
 {
     status = false;
+    slot->vergrendel();
 }
 
 void Deur::teken(QPaintDevice *tp)
