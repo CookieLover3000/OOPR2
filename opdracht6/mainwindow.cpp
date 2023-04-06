@@ -92,7 +92,10 @@ void MainWindow::on_schuifdeurSensorKnop_clicked()
         catch (SlotException &ex)
         {
             ui->textBrowser->clear();
-            ui->textBrowser->append(QString::fromStdString(ex.returnErrorMessage()));
+            if(ex.plaatsVanHetSlot() != "")
+                ui->textBrowser->append(QString::fromStdString("geen idkaart voor: " + ex.plaatsVanHetSlot()));
+            else
+                ui->textBrowser->append(QString::fromStdString("Geen toegang met kaart: " + ex.kaartVanBinnendringer()));
         }
         deuren[0]->open();
     }
@@ -115,7 +118,10 @@ void MainWindow::on_d1Knop_clicked()
         catch (SlotException &ex)
         {
             ui->textBrowser->clear();
-            ui->textBrowser->append(QString::fromStdString(ex.returnErrorMessage()));
+            if(ex.plaatsVanHetSlot() != "")
+                ui->textBrowser->append(QString::fromStdString("geen idkaart voor: " + ex.plaatsVanHetSlot()));
+            else
+                ui->textBrowser->append(QString::fromStdString("Geen toegang met kaart: " + ex.kaartVanBinnendringer()));
         }
         deuren[2]->open();
     }

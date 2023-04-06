@@ -14,11 +14,11 @@ void KaartSlot::ontgrendel(string eenSleutel)
     map <string, IdKaart*>::iterator i;
     i = idKaarten.find(eenSleutel);
     if(i == idKaarten.end()) // error 1
-        throw SlotException(eenSleutel, this, plaats, 1);
+        throw SlotException(eenSleutel, plaats);
     else if (i->second->heeftToegang(this))
         vergrendeld = false;
     else // error 2
-        throw SlotException(i->first, this, plaats, 2);
+        throw SlotException(i->first, "");
 }
 
 void KaartSlot::vergrendel()
